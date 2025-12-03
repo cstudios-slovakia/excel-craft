@@ -5,8 +5,8 @@ namespace Cstudios\ExcelExport\controllers;
 use Craft;
 use craft\errors\InvalidPluginException;
 use craft\web\Controller;
-use yii\web\Response;
 use Cstudios\ExcelExport\Plugin;
+use yii\web\Response;
 
 /**
  * Class SettingsController
@@ -24,7 +24,7 @@ class SettingsController extends Controller
         $settings = $plugin->getSettings();
 
         return $this->renderTemplate('excelexport/settings/index', [
-            'settings' => $settings ?? null
+            'settings' => $settings ?? null,
         ]);
     }
 
@@ -55,7 +55,7 @@ class SettingsController extends Controller
 
         // Send the plugin back to the template
         Craft::$app->getUrlManager()->setRouteParams([
-            'plugin' => $plugin
+            'plugin' => $plugin,
         ]);
 
         return null;

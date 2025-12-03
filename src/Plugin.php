@@ -6,9 +6,9 @@ use Craft;
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
 use craft\helpers\UrlHelper;
-use Cstudios\ExcelExport\models\Settings;
 use Cstudios\ExcelExport\assetbundles\ExcelExportAsset;
 use Cstudios\ExcelExport\formatters\XlsxResponseFormatter;
+use Cstudios\ExcelExport\models\Settings;
 use Cstudios\ExcelExport\plugin\Routes;
 use Cstudios\ExcelExport\plugin\Services;
 
@@ -22,7 +22,7 @@ class Plugin extends BasePlugin
     use Services;
 
     /** @var string */
-    const PLUGIN_HANDLE = 'excelexport';
+    public const PLUGIN_HANDLE = 'excelexport';
 
     /**
      * @var bool
@@ -55,7 +55,7 @@ class Plugin extends BasePlugin
     public static function config(): array
     {
         return [
-            'components' => []
+            'components' => [],
         ];
     }
 

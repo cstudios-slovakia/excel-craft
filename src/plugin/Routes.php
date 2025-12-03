@@ -2,12 +2,9 @@
 
 namespace Cstudios\ExcelExport\plugin;
 
-use Craft;
 use craft\events\RegisterUrlRulesEvent;
 use craft\web\UrlManager;
 use yii\base\Event;
-use craft\services\UserPermissions;
-use craft\events\RegisterUserPermissionsEvent;
 
 /**
  * Class Routes
