@@ -1,0 +1,73 @@
+{% extends "_layouts/cp" %}
+
+{% set title = 'Excel Export'|t('excelexport')%}
+
+{% set crumbs = [
+    { label: "Settings"|t, url: url('excelexport/settings') },
+] %}
+
+{% set fullPageForm = true %}
+
+{% import "_includes/forms" as forms %}
+
+{% set tabs = {
+    general: {
+        label: 'General'|t,
+        url: '#general',
+    }
+} %}
+
+{% block actionButton %}
+    <button type="submit" class="btn submit">{{ "Save"|t }}</button>
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" name="action" value="excelexport/settings/save-settings">
+    <input type="hidden" name="redirect" value="{{ 'excelexport/settings'|hash }}">
+
+    <div id="general">
+        <div class="field">
+            <p class="light">{{ 'Exports are only available when the plugin is enabled. Configure defaults for the generated Excel files below.'|t('excelexport') }}</p>
+        </div>
+
+        {{ forms.lightswitchField({
+            id: 'includeHeaderRow',
+            label: 'Include header row'|t('excelexport'),
+            instructions: 'Adds a header row using the collected keys from the exported data.'|t('excelexport'),
+            name: 'settings[includeHeaderRow]',
+            on: settings.includeHeaderRow,
+            errors: settings.getErrors('includeHeaderRow')
+        }) }}
+
+        {{ forms.textField({
+            id: 'defaultFileName',
+            label: 'Default filename'|t('excelexport'),
+            instructions: 'Used for the download when no custom Content-Disposition header is provided.'|t('excelexport'),
+            name: 'settings[defaultFileName]',
+            value: settings.defaultFileName,
+            errors: settings.getErrors('defaultFileName')
+        }) }}
+
+        {{ forms.textField({
+            id: 'contentType',
+            label: 'Content type'|t('excelexport'),
+            instructions: 'MIME type applied to exported responses.'|t('excelexport'),
+            name: 'settings[contentType]',
+            value: settings.contentType,
+            errors: settings.getErrors('contentType')
+        }) }}
+    </div>
+{% endblock %}
+
+{% block details %}
+    <div class="meta">
+        {{ forms.lightswitchField({
+            id: 'enabled',
+            label: 'Enable exports'|t('excelexport'),
+            instructions: 'When disabled, the XLSX formatter and control panel export option will be unavailable.'|t('excelexport'),
+            name: 'settings[enabled]',
+            on: settings.enabled,
+            errors: settings.getErrors('enabled')
+        }) }}
+    </div>
+{% endblock %}
