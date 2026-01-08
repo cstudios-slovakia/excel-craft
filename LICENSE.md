@@ -141,4 +141,4 @@ Licensor may update this Agreement for future releases of the Plugin. Your conti
 For licensing questions, commercial terms, or permissions not granted by this Agreement, contact:
 
 **Cstudios, s.r.o.**  
-Email: info@cstudios.sk
+Email: front@cstudios.sk
